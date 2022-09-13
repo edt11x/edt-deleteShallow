@@ -1,0 +1,51 @@
+#!/bin/bash
+for i in \
+    "/Volumes/GoogleDrive/My Drive/Documents" \
+    "/Users/edt/Dropbox (Custom Micronics)/Documents" \
+    "~/Documents" \
+    "/Volumes/GoogleDrive-105814979530835664777/My Drive/Documents"
+do
+    cd "$i"
+    echo "==================================================="
+    echo "==================================================="
+    for j in 1 2 3 4 5 6 7 8 9 10
+    do
+        pwd
+        sleep 1
+    done
+    echo "==================================================="
+    echo "==================================================="
+    perl ~/bin/deleteShallowFileCopies.pl --verbose \
+        --prune ".OABK" \
+        --prune ".FBCLockFolder" \
+        --prune "contents.xml" \
+        --prune "EBooks" \
+        --prune "Projects" \
+        --prune ".localized" \
+        --prune ".DS_Store" \
+        --prune "PkgInfo" \
+        --exclude "./" "./Documents - Alice/" \
+        --exclude "./CML/docman/" "./CML/docman/Siemens/" \
+        --exclude "./CML/docman/Siemens/status/" "./Dans Status/" \
+        --exclude "./Expense Reports/" "./wp/cml/" \
+        --exclude "./JSF/Datasheets_with_no_NDA_required/" "./Reference Documents/Manuals/" \
+        --exclude "./OmniFocus/Old.OmniFocus.ofocus/" "./OmniFocus/OmniFocus.ofocus/" \
+        --exclude "./OmniFocus/OmniFocus.ofocus-to-be-deleted-anBQGA2KzHt/" "./OmniFocus/Old.OmniFocus.ofocus/" \
+        --exclude "./OmniFocus/OmniFocus.ofocus-to-be-deleted-anBQGA2KzHt/" "./OmniFocus/OmniFocus.ofocus/" \
+        --exclude "./TurboTax/2012/" "./Web Receipts/Vanguard/" \
+        --exclude "./TurboTax/2012/" "./CML/CMLReports/" \
+        --exclude "./TurboTax/2013/" "./CML/CMLReports/" \
+        --exclude "./TurboTax/2013/" "./TurboTax/2014/" \
+        --exclude "./TurboTax/2014/" "./TurboTax/2015/" \
+        --exclude "./TurboTax/2015/" "./TurboTax/2016/" \
+        --exclude "./sfo/" "./wp/sfo/" \
+        --exclude "./wp/cml/" "./Dans Status/" \
+        --exclude "./wp/cml/" "./Goodrich/" \
+        --exclude "./wp/cml/docman/" "./CML/docman/" \
+        --exclude "./wp/cml/docman/Siemens/" "./wp/cml/docman/" \
+        --exclude "./wp/cml/docman/Siemens/status/" "./Dans Status/" \
+        --exclude "./Ball Aerospace/" "./Security/" \
+        --exclude "./Certificates/" "./Security/" \
+
+    done
+    exit 0
